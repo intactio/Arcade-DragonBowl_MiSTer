@@ -27,6 +27,8 @@ module jtdrgnbowl_video(
     input      [15:0] fram_dout,
     output     [12:1] bram_addr,
     input      [15:0] bram_dout,
+    output     [12:1] oram_addr,
+    input      [15:0] oram_dout,
     output     [12:1] pal_addr,
     input      [15:0] pal_dout,
 
@@ -40,6 +42,11 @@ module jtdrgnbowl_video(
     output     [19:2] scr1_addr,
     input      [31:0] scr1_data,
     input             scr1_ok,
+
+    output            obj_cs,
+    output     [19:2] obj_addr,
+    input      [31:0] obj_data,
+    input             obj_ok,
 
     output            scr2_cs,
     output     [19:2] scr2_addr,
@@ -61,6 +68,7 @@ localparam [7:0] TXT_DX = 8'd1;
 
 wire [8:0] vdump, vrender, hdump;
 wire [7:0] txt_pxl, fg_pxl, bg_pxl;
+wire [8:0] obj_pxl;
 wire [9:0] bg_scrx = bg_x[9:0] + BG_DX,
            fg_scrx = fg_x[9:0] + FG_DX;
 // shorter blanking to cut SDRAM requests, as jtgaiden
@@ -158,6 +166,23 @@ jtdrgnbowl_scroll u_fg(
     .pxl        ( fg_pxl    )
 );
 
+jtdrgnbowl_obj u_obj(
+    .rst        ( rst       ),
+    .clk        ( clk       ),
+    .pxl_cen    ( pxl_cen   ),
+    .hs         ( HS        ),
+    .blankn     ( vblankn   ),
+    .hdump      ( hdump     ),
+    .vrender    ( vrender   ),
+    .ram_addr   ( oram_addr ),
+    .ram_dout   ( oram_dout ),
+    .rom_cs     ( obj_cs    ),
+    .rom_addr   ( obj_addr  ),
+    .rom_data   ( obj_data  ),
+    .rom_ok     ( obj_ok    ),
+    .pxl        ( obj_pxl   )
+);
+
 jtdrgnbowl_colmix u_colmix(
     .clk        ( clk       ),
     .pxl_cen    ( pxl_cen   ),
@@ -166,6 +191,7 @@ jtdrgnbowl_colmix u_colmix(
     .txt_pxl    ( txt_pxl   ),
     .fg_pxl     ( fg_pxl    ),
     .bg_pxl     ( bg_pxl    ),
+    .obj_pxl    ( obj_pxl   ),
     .red        ( red       ),
     .green      ( green     ),
     .blue       ( blue      ),

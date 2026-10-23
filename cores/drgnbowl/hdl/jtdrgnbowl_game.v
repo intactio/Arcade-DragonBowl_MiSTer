@@ -25,8 +25,6 @@ assign ram_we     = {2{pre_ramwe}} & ~ram_dsn;
 assign ram_ok     = ramcs_l | ~ram_cs;
 jtframe_sh #(.W(1),.L(2)) u_sh(clk,1'b1,ram_cs,ramcs_l);
 
-// sprites (task 5)
-assign { obj_cs, obj_addr, oram_addr } = 0;
 
 jtdrgnbowl_main u_main(
     .rst        ( rst       ),
@@ -93,8 +91,15 @@ jtdrgnbowl_video u_video(
     .fram_dout  ( fram_dout ),
     .bram_addr  ( bram_addr ),
     .bram_dout  ( bram_dout ),
+    .oram_addr  ( oram_addr ),
+    .oram_dout  ( oram_dout ),
     .pal_addr   ( pal_addr  ),
     .pal_dout   ( pal_dout  ),
+
+    .obj_cs     ( obj_cs    ),
+    .obj_addr   ( obj_addr  ),
+    .obj_data   ( obj_data  ),
+    .obj_ok     ( obj_ok    ),
 
     .txt_cs     ( txt_cs    ),
     .txt_addr   ( txt_addr  ),
