@@ -25,9 +25,8 @@ assign ram_we     = {2{pre_ramwe}} & ~ram_dsn;
 assign ram_ok     = ramcs_l | ~ram_cs;
 jtframe_sh #(.W(1),.L(2)) u_sh(clk,1'b1,ram_cs,ramcs_l);
 
-// graphics (tasks 4 and 5)
-assign { txt_cs, txt_addr, obj_cs, obj_addr, scr_cs, scr_addr } = 0;
-assign { tram_addr, fram_addr, bram_addr, oram_addr, pal_addr } = 0;
+// sprites (task 5)
+assign { obj_cs, obj_addr, oram_addr } = 0;
 
 jtdrgnbowl_main u_main(
     .rst        ( rst       ),
@@ -83,9 +82,37 @@ jtdrgnbowl_video u_video(
     .HS         ( HS        ),
     .VS         ( VS        ),
 
+    .bg_x       ( bg_x      ),
+    .bg_y       ( bg_y      ),
+    .fg_x       ( fg_x      ),
+    .fg_y       ( fg_y      ),
+
+    .tram_addr  ( tram_addr ),
+    .tram_dout  ( tram_dout ),
+    .fram_addr  ( fram_addr ),
+    .fram_dout  ( fram_dout ),
+    .bram_addr  ( bram_addr ),
+    .bram_dout  ( bram_dout ),
+    .pal_addr   ( pal_addr  ),
+    .pal_dout   ( pal_dout  ),
+
+    .txt_cs     ( txt_cs    ),
+    .txt_addr   ( txt_addr  ),
+    .txt_data   ( txt_data  ),
+    .txt_ok     ( txt_ok    ),
+    .scr1_cs    ( scr1_cs   ),
+    .scr1_addr  ( scr1_addr ),
+    .scr1_data  ( scr1_data ),
+    .scr1_ok    ( scr1_ok   ),
+    .scr2_cs    ( scr2_cs   ),
+    .scr2_addr  ( scr2_addr ),
+    .scr2_data  ( scr2_data ),
+    .scr2_ok    ( scr2_ok   ),
+
     .red        ( red       ),
     .green      ( green     ),
-    .blue       ( blue      )
+    .blue       ( blue      ),
+    .gfx_en     ( gfx_en    )
 );
 
 jtdrgnbowl_sound u_sound(

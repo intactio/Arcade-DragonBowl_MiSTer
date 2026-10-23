@@ -5,9 +5,16 @@ jtframe:
   - get:
     - jtframe_edge.v
     - jtframe_16bit_reg.v
+  - from: ram
+    get:
+      - jtframe_bram_burst.v
   - from: video
     get:
       - jtframe_vtimer.v
+      - jtframe_scroll.yaml
+  - from: video/layouts
+    get:
+      - jtframe_8x8x4_packed_msb.v
   - from: cpu
     get:
       - jtframe_m68k.yaml
