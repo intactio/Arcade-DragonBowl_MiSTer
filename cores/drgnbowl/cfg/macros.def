@@ -1,0 +1,30 @@
+CORENAME=DragonBowl
+GAMETOP=jtdrgnbowl_game_sdram
+JTFRAME_RATE=59.19
+JTFRAME_BUTTONS=3
+# MAME bit order: left, right, down, up
+JTFRAME_JOY_UDRL
+JTFRAME_PXLCLK=6
+# no JT logo behind the OSD (not an official jotego core)
+JTFRAME_OSD_NOLOGO
+
+# Screen parameters
+JTFRAME_WIDTH=256
+JTFRAME_HEIGHT=224
+
+# ROM regions (byte offsets in the MRA download)
+#   maincpu  0x000000  256 kB
+#   audiocpu 0x040000   64 kB
+#   oki      0x050000  256 kB
+#   text     0x090000   64 kB
+#   sprites  0x0A0000    1 MB  (4 planes byte-interleaved into 32-bit words)
+#   tiles    0x1A0000    1 MB  (background + foreground, same interleave)
+JTFRAME_BA1_START = 0x040000
+PCM_START         = 0x050000
+JTFRAME_BA2_START = 0x090000
+OBJ_START         = 0x0A0000
+JTFRAME_BA3_START = 0x1A0000
+
+[mister]
+JTFRAME_ARX=4
+JTFRAME_ARY=3

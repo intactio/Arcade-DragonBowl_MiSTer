@@ -1,0 +1,16 @@
+drgnbowl:
+  - get:
+    - jtdrgnbowl_*.v
+jtframe:
+  - get:
+    - jtframe_edge.v
+    - jtframe_16bit_reg.v
+  - from: video
+    get:
+      - jtframe_vtimer.v
+  - from: cpu
+    get:
+      - jtframe_m68k.yaml
+      - jtframe_z80.yaml
+jt51:
+jt6295:

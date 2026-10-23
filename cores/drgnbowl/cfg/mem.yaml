@@ -1,0 +1,73 @@
+params:
+  - { name: PCM_OFFSET, value: "(`PCM_START-`JTFRAME_BA1_START)>>1" }
+  - { name: OBJ_OFFSET, value: "(`OBJ_START-`JTFRAME_BA2_START)>>1" }
+clocks:
+  clk:
+    # Z80 at 6 MHz, YM2151 at 4 MHz, OKI at 1 MHz
+    - freq: 6M
+      gate: [ snd ]
+      outputs:
+        - cen6
+    - freq: 4M
+      outputs:
+        - cen4
+        - cen2
+        - cen1
+audio:
+  rsum: 10k
+  channels:
+    # MAME: YM2151 0.40, OKI 0.50, mono
+    - { name: fm,  module: jt51,   rsum: 25k }
+    - { name: pcm, module: jt6295, rsum: 20k }
+sdram:
+  banks:
+    - buses:
+        - name: main
+          addr_width: 18
+          data_width: 16
+          cache_size: 1kB
+    - buses:
+        - name: snd
+          addr_width: 16
+          data_width: 8
+        - name: pcm
+          addr_width: 18
+          data_width: 8
+          offset: PCM_OFFSET
+    - buses:
+        - name: txt
+          addr_width: 16
+          data_width: 32
+        - name: obj
+          addr_width: 20
+          data_width: 32
+          offset: OBJ_OFFSET
+    - buses:
+        - name: scr
+          addr_width: 20
+          data_width: 32
+bram:
+  - name: ram
+    addr_width: 14
+    data_width: 16
+    rw: true
+  - name: tram
+    addr_width: 12
+    data_width: 16
+    dual_port: { name: main, we: txt_we, rw: true, din: ram_din, dout: mt_dout }
+  - name: fram
+    addr_width: 13
+    data_width: 16
+    dual_port: { name: main, we: fg_we, rw: true, din: ram_din, dout: mf_dout }
+  - name: bram
+    addr_width: 13
+    data_width: 16
+    dual_port: { name: main, we: bg_we, rw: true, din: ram_din, dout: mb_dout }
+  - name: oram
+    addr_width: 13
+    data_width: 16
+    dual_port: { name: main, we: obj_we, rw: true, din: ram_din, dout: mo_dout }
+  - name: pal
+    addr_width: 13
+    data_width: 16
+    dual_port: { name: main, we: pal_we, rw: true, din: ram_din, dout: mp_dout }

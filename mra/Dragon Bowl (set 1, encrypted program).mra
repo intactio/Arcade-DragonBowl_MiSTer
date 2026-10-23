@@ -1,0 +1,98 @@
+<misterromdescription>
+    <name>Dragon Bowl (set 1, encrypted program)</name>
+    <setname>drgnbowl</setname>
+    <rbf>DragonBowl</rbf>
+    <mameversion>0289</mameversion>
+    <year>1992</year>
+    <manufacturer>Nics</manufacturer>
+    <players>2</players>
+    <joystick>8-way</joystick>
+    <num_buttons>3</num_buttons>
+    <rotation>horizontal</rotation>
+    <resolution>15kHz</resolution>
+    <region>Korea</region>
+    <category>Beat 'em up</category>
+    <!-- DragonBowl: hobby core built on jotego's JTFRAME, not an official jotego core -->
+    <switches default="FF,FF" base="16" page_id="1" page_name="Switches">
+        <dip name="Demo Sounds" bits="0" ids="Off,On"/>
+        <dip name="Coin B" bits="2,4" ids="5C/1C,2C/1C,3C/1C,1C/2C,4C/1C,1C/3C,1C/4C,1C/1C"/>
+        <dip name="Coin A" bits="5,7" ids="5C/1C,2C/1C,3C/1C,1C/2C,4C/1C,1C/3C,1C/4C,1C/1C"/>
+        <dip name="Difficulty" bits="10,11" ids="Table 3,Table 1,Table 2,Normal"/>
+        <dip name="Energy" bits="12,13" ids="2,4,5,3"/>
+        <dip name="Lives" bits="14,15" ids="1,3,4,2"/>
+    </switches>
+    <buttons names="Grab,Attack,Jump,Start,Coin,Core credits" default="A,B,X,Start,Select,L"/>
+    <rom index="0" zip="drgnbowl.zip" md5="33b52ef088898e07f254309385acc02f">
+        <!-- maincpu 0x000000: program address bits 16 and 15 are swapped on this set
+             (bits 15 and 14 of each file); taking the 16 kB blocks of each 64 kB in
+             the order 0, 2, 1, 3 undoes it -->
+        <interleave output="16">
+            <part name="4.3h" crc="90730008" map="01" offset="0x00000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="10" offset="0x00000" length="0x4000"/>
+        </interleave>
+        <interleave output="16">
+            <part name="4.3h" crc="90730008" map="01" offset="0x08000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="10" offset="0x08000" length="0x4000"/>
+        </interleave>
+        <interleave output="16">
+            <part name="4.3h" crc="90730008" map="01" offset="0x04000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="10" offset="0x04000" length="0x4000"/>
+        </interleave>
+        <interleave output="16">
+            <part name="4.3h" crc="90730008" map="01" offset="0x0C000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="10" offset="0x0C000" length="0x4000"/>
+        </interleave>
+        <interleave output="16">
+            <part name="4.3h" crc="90730008" map="01" offset="0x10000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="10" offset="0x10000" length="0x4000"/>
+        </interleave>
+        <interleave output="16">
+            <part name="4.3h" crc="90730008" map="01" offset="0x18000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="10" offset="0x18000" length="0x4000"/>
+        </interleave>
+        <interleave output="16">
+            <part name="4.3h" crc="90730008" map="01" offset="0x14000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="10" offset="0x14000" length="0x4000"/>
+        </interleave>
+        <interleave output="16">
+            <part name="4.3h" crc="90730008" map="01" offset="0x1C000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="10" offset="0x1C000" length="0x4000"/>
+        </interleave>
+        <!-- audiocpu 0x040000 -->
+        <part name="1.2r" crc="d9cbf84a"/>
+        <!-- oki 0x050000 -->
+        <part name="3.3q" crc="489c6d0e"/>
+        <part name="2.3r" crc="7710ce39"/>
+        <!-- text 0x090000 -->
+        <interleave output="16">
+            <part name="22.6m" crc="86e41198" map="12"/>
+        </interleave>
+        <!-- sprites 0x0A0000: byte n = pixel bit n (MAME plane order 0/4..3/4 = bit 3..0) -->
+        <interleave output="32">
+            <part name="15.5r" crc="7429371c" map="1000"/>
+            <part name="17.6r" crc="9088af09" map="0100"/>
+            <part name="19.7r" crc="5082ceff" map="0010"/>
+            <part name="21.8r" crc="0cee8711" map="0001"/>
+        </interleave>
+        <interleave output="32">
+            <part name="14.5q" crc="4301b97f" map="1000"/>
+            <part name="16.6q" crc="8ade4e01" map="0100"/>
+            <part name="18.7q" crc="d18a7ffb" map="0010"/>
+            <part name="20.8q" crc="9647e02a" map="0001"/>
+        </interleave>
+        <!-- tiles 0x1A0000: byte n = pixel bit n (MAME plane order 3/4..0/4 = bit 3..0), address still scrambled -->
+        <interleave output="32">
+            <part name="6.5a"  crc="b15759f7" map="0001"/>
+            <part name="8.6a"  crc="51a2f5c4" map="0010"/>
+            <part name="10.7a" crc="9e4b3c61" map="0100"/>
+            <part name="12.8a" crc="6c497ad3" map="1000"/>
+        </interleave>
+        <interleave output="32">
+            <part name="7.5b"  crc="2541d445" map="0001"/>
+            <part name="9.6b"  crc="f4c8850f" map="0010"/>
+            <part name="11.7b" crc="0d33d083" map="0100"/>
+            <part name="13.8b" crc="7a84adff" map="1000"/>
+        </interleave>
+        <!-- end 0x2A0000 -->
+    </rom>
+</misterromdescription>
