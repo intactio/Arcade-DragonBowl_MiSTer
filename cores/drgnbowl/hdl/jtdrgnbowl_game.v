@@ -25,9 +25,6 @@ assign ram_we     = {2{pre_ramwe}} & ~ram_dsn;
 assign ram_ok     = ramcs_l | ~ram_cs;
 jtframe_sh #(.W(1),.L(2)) u_sh(clk,1'b1,ram_cs,ramcs_l);
 
-// sound (task 3)
-assign { snd_cs, snd_addr, pcm_cs, pcm_addr } = 0;
-assign { fm_l, fm_r, pcm } = 0;
 // graphics (tasks 4 and 5)
 assign { txt_cs, txt_addr, obj_cs, obj_addr, scr_cs, scr_addr } = 0;
 assign { tram_addr, fram_addr, bram_addr, oram_addr, pal_addr } = 0;
@@ -89,6 +86,29 @@ jtdrgnbowl_video u_video(
     .red        ( red       ),
     .green      ( green     ),
     .blue       ( blue      )
+);
+
+jtdrgnbowl_sound u_sound(
+    .rst        ( rst       ),
+    .clk        ( clk       ),
+    .cen6       ( cen6      ),
+    .cen4       ( cen4      ),
+    .cen2       ( cen2      ),
+    .cen1       ( cen1      ),
+
+    .cmd        ( snd_cmd   ),
+    .cmd_wr     ( snd_wr    ),
+    .rom_addr   ( snd_addr  ),
+    .rom_cs     ( snd_cs    ),
+    .rom_data   ( snd_data  ),
+    .rom_ok     ( snd_ok    ),
+    .pcm_addr   ( pcm_addr  ),
+    .pcm_cs     ( pcm_cs    ),
+    .pcm_data   ( pcm_data  ),
+    .pcm_ok     ( pcm_ok    ),
+    .fm_l       ( fm_l      ),
+    .fm_r       ( fm_r      ),
+    .pcm        ( pcm       )
 );
 
 endmodule

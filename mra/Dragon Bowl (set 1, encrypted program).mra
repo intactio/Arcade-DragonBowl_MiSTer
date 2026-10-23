@@ -22,41 +22,41 @@
         <dip name="Lives" bits="14,15" ids="1,3,4,2"/>
     </switches>
     <buttons names="Grab,Attack,Jump,Start,Coin,Core credits" default="A,B,X,Start,Select,L"/>
-    <rom index="0" zip="drgnbowl.zip" md5="33b52ef088898e07f254309385acc02f">
+    <rom index="0" zip="drgnbowl.zip" md5="386d42838b0675d5ad8cc30888650390">
         <!-- maincpu 0x000000: program address bits 16 and 15 are swapped on this set
              (bits 15 and 14 of each file); taking the 16 kB blocks of each 64 kB in
              the order 0, 2, 1, 3 undoes it -->
         <interleave output="16">
-            <part name="4.3h" crc="90730008" map="01" offset="0x00000" length="0x4000"/>
-            <part name="5.4h" crc="193cc915" map="10" offset="0x00000" length="0x4000"/>
+            <part name="4.3h" crc="90730008" map="10" offset="0x00000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="01" offset="0x00000" length="0x4000"/>
         </interleave>
         <interleave output="16">
-            <part name="4.3h" crc="90730008" map="01" offset="0x08000" length="0x4000"/>
-            <part name="5.4h" crc="193cc915" map="10" offset="0x08000" length="0x4000"/>
+            <part name="4.3h" crc="90730008" map="10" offset="0x08000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="01" offset="0x08000" length="0x4000"/>
         </interleave>
         <interleave output="16">
-            <part name="4.3h" crc="90730008" map="01" offset="0x04000" length="0x4000"/>
-            <part name="5.4h" crc="193cc915" map="10" offset="0x04000" length="0x4000"/>
+            <part name="4.3h" crc="90730008" map="10" offset="0x04000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="01" offset="0x04000" length="0x4000"/>
         </interleave>
         <interleave output="16">
-            <part name="4.3h" crc="90730008" map="01" offset="0x0C000" length="0x4000"/>
-            <part name="5.4h" crc="193cc915" map="10" offset="0x0C000" length="0x4000"/>
+            <part name="4.3h" crc="90730008" map="10" offset="0x0C000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="01" offset="0x0C000" length="0x4000"/>
         </interleave>
         <interleave output="16">
-            <part name="4.3h" crc="90730008" map="01" offset="0x10000" length="0x4000"/>
-            <part name="5.4h" crc="193cc915" map="10" offset="0x10000" length="0x4000"/>
+            <part name="4.3h" crc="90730008" map="10" offset="0x10000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="01" offset="0x10000" length="0x4000"/>
         </interleave>
         <interleave output="16">
-            <part name="4.3h" crc="90730008" map="01" offset="0x18000" length="0x4000"/>
-            <part name="5.4h" crc="193cc915" map="10" offset="0x18000" length="0x4000"/>
+            <part name="4.3h" crc="90730008" map="10" offset="0x18000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="01" offset="0x18000" length="0x4000"/>
         </interleave>
         <interleave output="16">
-            <part name="4.3h" crc="90730008" map="01" offset="0x14000" length="0x4000"/>
-            <part name="5.4h" crc="193cc915" map="10" offset="0x14000" length="0x4000"/>
+            <part name="4.3h" crc="90730008" map="10" offset="0x14000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="01" offset="0x14000" length="0x4000"/>
         </interleave>
         <interleave output="16">
-            <part name="4.3h" crc="90730008" map="01" offset="0x1C000" length="0x4000"/>
-            <part name="5.4h" crc="193cc915" map="10" offset="0x1C000" length="0x4000"/>
+            <part name="4.3h" crc="90730008" map="10" offset="0x1C000" length="0x4000"/>
+            <part name="5.4h" crc="193cc915" map="01" offset="0x1C000" length="0x4000"/>
         </interleave>
         <!-- audiocpu 0x040000 -->
         <part name="1.2r" crc="d9cbf84a"/>

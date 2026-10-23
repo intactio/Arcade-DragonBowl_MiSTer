@@ -93,7 +93,7 @@ always @* begin
     obj_cs  = !BUSn && A[19:13]==7'h3b;                 // 076000-077FFF
     pal_cs  = !BUSn && A[19:13]==7'h3c;                 // 078000-079FFF
     cab_cs  = !ASn  && A[19:12]==8'h7a &&  RnW;         // 07A000-07A005 inputs
-    snd_cs  = !ASn  && A[19:12]==8'h7a && !RnW && A[3:1]==7 && !LDSn; // 07A00E
+    snd_cs  = !ASn  && A[19:12]==8'h7a && !RnW && A[3:1]==7 && !UDSn; // 07A00E, even byte = D15-8
     clr_int = !BUSn && A[19:12]==8'h7e && !RnW;         // 07E000 IRQ 5 ack
     scr_cs  = !BUSn && A[19:12]==8'h7f && !RnW;         // 07F000-07F007 scroll
 end
@@ -131,7 +131,7 @@ assign snd_cmd = latch;
 always @(posedge clk) begin
     snd_cs_l <= snd_cs;
     snd_wr   <= snd_cs & ~snd_cs_l;
-    if( snd_cs & ~snd_cs_l ) latch <= cpu_dout[7:0];
+    if( snd_cs & ~snd_cs_l ) latch <= cpu_dout[15:8];
 end
 
 jtframe_edge #(.QSET(0)) u_vbl(
