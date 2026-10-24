@@ -7,11 +7,11 @@
     Dragon Bowl (Nics, 1992), a bootleg of Tecmo's Ninja Gaiden.
     Built on JTFRAME and jtgaiden by Jose Tejada Gomez. Date: 24-10-2026 */
 
-// Layer order from MAME's drgnbowl screen_update: background, foreground,
-// text, then sprites. Foreground, text and sprites use pen 15 as
-// transparent. A sprite with the "behind" bit only shows where foreground
-// and text are transparent; without it, it is on top of everything.
-// No blending.
+// Layer order: background, foreground, sprites, text. Foreground, text and
+// sprites use pen 15 as transparent. A sprite with the "behind" bit only
+// shows where the foreground is transparent. MAME draws sprites over the
+// text layer, but on the PCB the text ("DEMO GAME", the score bar) stays on
+// top of the sprites. No blending.
 // Palette RAM: 4096 words of xBGR 444; text 000, sprites 100, foreground
 // 200, background 300 (16 palettes of 16 colours each).
 module jtdrgnbowl_colmix(
@@ -33,7 +33,7 @@ module jtdrgnbowl_colmix(
 
 wire txt_op = txt_pxl[3:0]!=4'hf && gfx_en[0];
 wire fg_op  = fg_pxl [3:0]!=4'hf && gfx_en[1];
-wire obj_op = obj_pxl[3:0]!=4'hf && gfx_en[3] && !(obj_pxl[8] && (txt_op || fg_op));
+wire obj_op = obj_pxl[3:0]!=4'hf && gfx_en[3] && !txt_op && !(obj_pxl[8] && fg_op);
 
 always @(posedge clk) begin
     pal_addr <= obj_op ? { 4'h1, obj_pxl[7:0] } :
