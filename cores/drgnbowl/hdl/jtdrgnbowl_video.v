@@ -5,7 +5,9 @@
     (at your option) any later version.
 
     Dragon Bowl (Nics, 1992), a bootleg of Tecmo's Ninja Gaiden.
-    Built on JTFRAME and jtgaiden by Jose Tejada Gomez. Date: 23-10-2026 */
+    Based on jtgaiden_video.v from jtcores (cores/gaiden),
+    SPDX-FileCopyrightText: 2026 Jose Tejada Gomez, GPL-3.0-or-later,
+    modified for Dragon Bowl. Date: 23-10-2026 */
 
 module jtdrgnbowl_video(
     input             rst,
