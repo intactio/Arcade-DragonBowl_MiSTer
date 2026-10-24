@@ -2,6 +2,8 @@
 
 [English](README.md) · [한국어](README.ko.md) · 日本語
 
+![MiSTer で動かしたドラゴンボウルのタイトル画面](screenshots/01-title.png)
+
 **ドラゴンボウル（Dragon Bowl）** の MiSTer FPGA コアです。ドラゴンボウルは 1992 年に韓国のニックス（Nics）が作ったアーケードゲームで、テクモのアーケード版『忍者龍剣伝』（1988 年）を無断で改造したブートレグです。専用基板で動き、グラフィックとサウンドが新しく作られています。
 
 趣味のプロジェクトで、**jotego の公式コアではありません**。jotego の JTFRAME の上に作り、彼の忍者龍剣伝コア（JTGAIDEN）を参考にしています。
@@ -20,6 +22,12 @@
 MAME と同じく set 1 が親、set 2 がクローンなので、set 2 は `_alternatives` の下にあります。`mra/` フォルダは SD カードの `_Arcade/` と同じ構成です。set 1 のプログラム ROM はアドレス線が 2 本入れ替わっていますが、MRA がブロックの順番を戻すので、両セットとも同じプログラムを読み、同じように動きます。
 
 ROM は含まれていません。お手持ちの MAME セット（`drgnbowl.zip`、`drgnbowla.zip`）を `games/mame/` に置いてください。
+
+## スクリーンショット
+
+| | |
+|---|---|
+| ![1 面開始の画面](screenshots/02-round-start.png)<br>1 面開始 | ![1 面、家の前](screenshots/03-stage1.png)<br>1 面 |
 
 ## 目標：実機どおりに動くこと
 

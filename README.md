@@ -2,6 +2,8 @@
 
 English · [한국어](README.ko.md) · [日本語](README.ja.md)
 
+![Title screen of Dragon Bowl running on MiSTer](screenshots/01-title.png)
+
 A MiSTer FPGA core for **Dragon Bowl**, the 1992 Korean arcade game by Nics. Dragon Bowl is an unlicensed bootleg of Tecmo's arcade *Ninja Gaiden* (1988) running on its own board, with new graphics and sound.
 
 This is a hobby project. It is **not an official jotego core**, although it is built on jotego's JTFRAME framework and borrows from his Ninja Gaiden core (JTGAIDEN).
@@ -20,6 +22,12 @@ This core was developed with the help of an AI coding assistant (Anthropic's Cla
 As in MAME, set 1 is the parent and set 2 a clone, so set 2 sits under `_alternatives`. The `mra/` folder mirrors `_Arcade/` on the SD card. Set 1's program ROMs have two address lines swapped; the MRA puts the blocks back in order, so both sets load the same program and play the same.
 
 ROMs are not included: put your own MAME sets (`drgnbowl.zip`, `drgnbowla.zip`) in `games/mame/`.
+
+## Screenshots
+
+| | |
+|---|---|
+| ![Round 1 start screen](screenshots/02-round-start.png)<br>Round 1 start | ![Stage 1, in front of the house](screenshots/03-stage1.png)<br>Stage 1 |
 
 ## Goal: behave like the PCB
 

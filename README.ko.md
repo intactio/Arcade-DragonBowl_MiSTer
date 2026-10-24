@@ -2,6 +2,8 @@
 
 [English](README.md) · 한국어 · [日本語](README.ja.md)
 
+![MiSTer에서 실행한 드래곤 보울의 타이틀 화면](screenshots/01-title.png)
+
 **드래곤 보울(Dragon Bowl)**의 MiSTer FPGA 코어입니다. 드래곤 보울은 1992년 한국의 닉스(Nics)가 만든 아케이드 게임으로, 테크모의 아케이드 《닌자 가이덴》(1988)을 무단으로 개조한 부트렉입니다. 전용 기판에서 돌아가며, 그래픽과 사운드를 새로 만들었습니다.
 
 취미로 만든 프로젝트이며 **jotego의 공식 코어가 아닙니다**. jotego의 JTFRAME 위에서 만들었고, 그의 닌자 가이덴 코어(JTGAIDEN)를 참고했습니다.
@@ -20,6 +22,12 @@
 MAME처럼 set 1이 부모, set 2가 클론이라서 set 2는 `_alternatives` 아래에 있습니다. `mra/` 폴더는 SD 카드의 `_Arcade/`와 같은 구조입니다. set 1의 프로그램 롬은 주소선 두 개가 바뀌어 있는데, MRA가 블록 순서를 바로잡아서 두 세트가 같은 프로그램을 읽고 똑같이 동작합니다.
 
 롬은 들어 있지 않습니다. 직접 가지고 계신 MAME 세트(`drgnbowl.zip`, `drgnbowla.zip`)를 `games/mame/`에 넣어 주세요.
+
+## 스크린샷
+
+| | |
+|---|---|
+| ![1라운드 시작 화면](screenshots/02-round-start.png)<br>1라운드 시작 | ![1스테이지, 집 앞](screenshots/03-stage1.png)<br>1스테이지 |
 
 ## 목표: 실기처럼 동작
 
